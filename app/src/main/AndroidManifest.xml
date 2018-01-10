@@ -19,6 +19,7 @@
 
         <service android:name=".servicios.PrimerServicioIniciado" />
         <service android:name=".servicios.ServicioIniciadoCicloVida" />
+        <service android:name=".servicios.ServicioTareaLargaDuracion" />
     </application>
 
 </manifest>

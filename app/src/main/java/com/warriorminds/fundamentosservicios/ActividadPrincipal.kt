@@ -1,12 +1,12 @@
 package com.warriorminds.fundamentosservicios
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import com.warriorminds.fundamentosservicios.servicios.PrimerServicioIniciado
 import com.warriorminds.fundamentosservicios.servicios.ServicioIniciadoCicloVida
+import com.warriorminds.fundamentosservicios.servicios.ServicioTareaLargaDuracion
 import kotlinx.android.synthetic.main.actividad_principal.*
 
 class ActividadPrincipal : AppCompatActivity() {
@@ -33,6 +33,10 @@ class ActividadPrincipal : AppCompatActivity() {
         btnCicloVidaServicioIniciado.setOnClickListener {
             iniciarServicioIniciadoCicloVida()
         }
+
+        btnServicioLargaDuracion.setOnClickListener {
+            iniciarServicioTareaLargaDuracion()
+        }
     }
 
     private fun detenerPrimerServicio() {
@@ -49,6 +53,11 @@ class ActividadPrincipal : AppCompatActivity() {
 
     private fun iniciarServicioIniciadoCicloVida() {
         val intent = Intent(this, ServicioIniciadoCicloVida::class.java)
+        startService(intent)
+    }
+
+    private fun iniciarServicioTareaLargaDuracion() {
+        val intent = Intent(this, ServicioTareaLargaDuracion::class.java)
         startService(intent)
     }
 }
