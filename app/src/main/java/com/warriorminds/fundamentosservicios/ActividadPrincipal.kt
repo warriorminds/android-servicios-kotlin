@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import com.warriorminds.fundamentosservicios.servicios.IntentServiceLargaDuracion
 import com.warriorminds.fundamentosservicios.servicios.PrimerServicioIniciado
 import com.warriorminds.fundamentosservicios.servicios.ServicioIniciadoCicloVida
 import com.warriorminds.fundamentosservicios.servicios.ServicioTareaLargaDuracion
@@ -37,6 +38,10 @@ class ActividadPrincipal : AppCompatActivity() {
         btnServicioLargaDuracion.setOnClickListener {
             iniciarServicioTareaLargaDuracion()
         }
+
+        btnIntentServiceLargaDuracion.setOnClickListener {
+            iniciarIntentService()
+        }
     }
 
     private fun detenerPrimerServicio() {
@@ -58,6 +63,11 @@ class ActividadPrincipal : AppCompatActivity() {
 
     private fun iniciarServicioTareaLargaDuracion() {
         val intent = Intent(this, ServicioTareaLargaDuracion::class.java)
+        startService(intent)
+    }
+
+    private fun iniciarIntentService() {
+        val intent = Intent(this, IntentServiceLargaDuracion::class.java)
         startService(intent)
     }
 }
