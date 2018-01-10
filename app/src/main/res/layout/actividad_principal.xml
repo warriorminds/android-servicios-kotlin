@@ -80,6 +80,21 @@
                 android:layout_below="@id/servicioIniciadoLargaDuracion"
                 android:text="Iniciar Servicio Tarea Larga Duración" />
 
+            <TextView
+                android:id="@+id/intentServiceLargaDuracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnServicioLargaDuracion"
+                android:text="Intent Service Larga Duración:"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnIntentServiceLargaDuracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/intentServiceLargaDuracion"
+                android:text="Iniciar Intent Service Tarea Larga Duración" />
+
         </RelativeLayout>
     </ScrollView>
 
