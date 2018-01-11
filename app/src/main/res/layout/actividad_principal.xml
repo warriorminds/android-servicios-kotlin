@@ -95,6 +95,36 @@
                 android:layout_below="@id/intentServiceLargaDuracion"
                 android:text="Iniciar Intent Service Tarea Larga Duración" />
 
+            <TextView
+                android:id="@+id/servicioPrimerPlano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnIntentServiceLargaDuracion"
+                android:text="Servicio en Primer Plano:"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/interfazServicioPrimerPlano"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/servicioPrimerPlano"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnServicioPrimerPlano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Iniciar Servicio en Primer Plano" />
+
+                <Button
+                    android:id="@+id/btnDetenerServicioPrimerPlano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Detener Servicio en Primer Plano" />
+
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 
