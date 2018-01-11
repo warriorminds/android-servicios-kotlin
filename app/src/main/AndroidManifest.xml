@@ -23,7 +23,8 @@
         <service android:name=".servicios.IntentServiceLargaDuracion" />
         <service android:name=".servicios.ServicioPrimerPlano"/>
         <service android:name=".servicios.ServicioEnlazadoBinder" />
-        
+        <service android:name=".servicios.ServicioEnlazadoMensajero" android:process=":otroProceso" />
+
         <activity android:name=".SegundaActividad">
         </activity>
     </application>
