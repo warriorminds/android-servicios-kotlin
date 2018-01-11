@@ -139,6 +139,43 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvServicioEnlazadoBinder"
                 android:text="Obtener Hora Usando Servicio con IBinder" />
+
+            <TextView
+                android:id="@+id/servicioEnlazadoMensajero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnObtenerHora"
+                android:text="Servicio Enlazado Usando Mensajero:"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/interfazServicioEnlazadoMensajero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/servicioEnlazadoMensajero"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnMensajeroHora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hora Actual" />
+
+                <Button
+                    android:id="@+id/btnNumeroAleatorio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Número Aleatorio" />
+
+                <Button
+                    android:id="@+id/btnMensaje"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mensaje" />
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 

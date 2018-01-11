@@ -4,8 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
-import android.os.Bundle
-import android.os.IBinder
+import android.os.*
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.widget.Toast
@@ -21,6 +20,8 @@ class ActividadPrincipal : AppCompatActivity() {
 
     var servicioBinderConectado : Boolean = false
     var servicioEnlazadoBinder : ServicioEnlazadoBinder? = null
+    var servicioMensajeroConectado : Boolean = false
+    var mensajero : Messenger? = null
 
     val conexionServicioBinder = object : ServiceConnection {
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -33,6 +34,18 @@ class ActividadPrincipal : AppCompatActivity() {
             service?.let {
                 servicioEnlazadoBinder = (service as ServicioEnlazadoBinder.BinderServicioHora).obtenerServicio()
             }
+        }
+    }
+
+    val conexionServicioMensajero = object : ServiceConnection {
+        override fun onServiceDisconnected(name: ComponentName?) {
+            servicioMensajeroConectado = false
+            mensajero = null
+        }
+
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            servicioMensajeroConectado = true
+            mensajero = Messenger(service)
         }
     }
 
@@ -73,16 +86,30 @@ class ActividadPrincipal : AppCompatActivity() {
         btnObtenerHora.setOnClickListener {
             obtenerHoraServicioConIBinder()
         }
+
+        btnMensajeroHora.setOnClickListener {
+            obtenerHoraConServicioMensajero()
+        }
+
+        btnNumeroAleatorio.setOnClickListener {
+            obtenerNumeroAleatorio()
+        }
+
+        btnMensaje.setOnClickListener {
+            obtenerMensaje()
+        }
     }
 
     override fun onStart() {
         super.onStart()
         enlazarServicioBinder()
+        enlazarServicioMensajero()
     }
 
     override fun onStop() {
         super.onStop()
         desenlazarServicioBinder()
+        desenlazarServicioMensajero()
     }
 
     private fun detenerPrimerServicio() {
@@ -138,5 +165,51 @@ class ActividadPrincipal : AppCompatActivity() {
     private fun desenlazarServicioBinder() {
         unbindService(conexionServicioBinder)
         servicioBinderConectado = false
+    }
+
+    private fun obtenerHoraConServicioMensajero() {
+        if (servicioMensajeroConectado) {
+            val mensaje = Message.obtain(null, ServicioEnlazadoMensajero.MENSAJE_HORA)
+            mensaje.replyTo = Messenger(ManejadorActividad())
+            mensajero?.send(mensaje)
+        }
+    }
+
+    private fun obtenerNumeroAleatorio() {
+        if (servicioMensajeroConectado) {
+            val mensaje = Message.obtain(null, ServicioEnlazadoMensajero.MENSAJE_NUMERO_ALEATORIO)
+            mensaje.replyTo = Messenger(ManejadorActividad())
+            mensajero?.send(mensaje)
+        }
+    }
+
+    private fun obtenerMensaje() {
+        if (servicioMensajeroConectado) {
+            val mensaje = Message.obtain(null, ServicioEnlazadoMensajero.MENSAJE_TEXTO)
+            mensaje.replyTo = Messenger(ManejadorActividad())
+            mensajero?.send(mensaje)
+        }
+    }
+
+    private fun enlazarServicioMensajero() {
+        val intent = Intent(this, ServicioEnlazadoMensajero::class.java)
+        bindService(intent, conexionServicioMensajero, Context.BIND_AUTO_CREATE)
+    }
+
+    private fun desenlazarServicioMensajero() {
+        unbindService(conexionServicioMensajero)
+    }
+
+    inner class ManejadorActividad : Handler() {
+
+        override fun handleMessage(msg: Message?) {
+            var texto = ""
+            when (msg?.what) {
+                ServicioEnlazadoMensajero.MENSAJE_TEXTO -> texto = msg.data.getString(ServicioEnlazadoMensajero.TEXTO_EXTRA)
+                ServicioEnlazadoMensajero.MENSAJE_NUMERO_ALEATORIO -> texto = "El número aleatorio es: " + msg.data.getInt(ServicioEnlazadoMensajero.NUMERO_ALEATORIO_EXTRA)
+                ServicioEnlazadoMensajero.MENSAJE_HORA -> texto = msg.data.getString(ServicioEnlazadoMensajero.HORA_EXTRA)
+            }
+            Toast.makeText(this@ActividadPrincipal, texto, Toast.LENGTH_SHORT).show()
+        }
     }
 }
