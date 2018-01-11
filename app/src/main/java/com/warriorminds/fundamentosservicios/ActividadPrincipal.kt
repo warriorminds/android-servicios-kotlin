@@ -4,10 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import com.warriorminds.fundamentosservicios.servicios.IntentServiceLargaDuracion
-import com.warriorminds.fundamentosservicios.servicios.PrimerServicioIniciado
-import com.warriorminds.fundamentosservicios.servicios.ServicioIniciadoCicloVida
-import com.warriorminds.fundamentosservicios.servicios.ServicioTareaLargaDuracion
+import com.warriorminds.fundamentosservicios.servicios.*
 import kotlinx.android.synthetic.main.actividad_principal.*
 
 class ActividadPrincipal : AppCompatActivity() {
