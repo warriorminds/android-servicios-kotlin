@@ -17,13 +17,13 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".servicios.PrimerServicioIniciado" />
-        <service android:name=".servicios.ServicioIniciadoCicloVida" />
-        <service android:name=".servicios.ServicioTareaLargaDuracion" />
-        <service android:name=".servicios.IntentServiceLargaDuracion" />
-        <service android:name=".servicios.ServicioPrimerPlano"/>
-        <service android:name=".servicios.ServicioEnlazadoBinder" />
-        <service android:name=".servicios.ServicioEnlazadoMensajero" android:process=":otroProceso" />
+        <service android:name=".servicios.PrimerServicioIniciado" android:exported="false" />
+        <service android:name=".servicios.ServicioIniciadoCicloVida" android:exported="false" />
+        <service android:name=".servicios.ServicioTareaLargaDuracion" android:exported="false" />
+        <service android:name=".servicios.IntentServiceLargaDuracion" android:exported="false" />
+        <service android:name=".servicios.ServicioPrimerPlano" android:exported="false" />
+        <service android:name=".servicios.ServicioEnlazadoBinder" android:exported="false" />
+        <service android:name=".servicios.ServicioEnlazadoMensajero" android:process=":otroProceso" android:exported="false" />
 
         <activity android:name=".SegundaActividad">
         </activity>
