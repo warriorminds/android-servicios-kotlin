@@ -22,7 +22,8 @@
         <service android:name=".servicios.ServicioTareaLargaDuracion" />
         <service android:name=".servicios.IntentServiceLargaDuracion" />
         <service android:name=".servicios.ServicioPrimerPlano"/>
-
+        <service android:name=".servicios.ServicioEnlazadoBinder" />
+        
         <activity android:name=".SegundaActividad">
         </activity>
     </application>
