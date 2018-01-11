@@ -123,8 +123,22 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Detener Servicio en Primer Plano" />
-
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvServicioEnlazadoBinder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/interfazServicioPrimerPlano"
+                android:text="Servicio Enlazado Usando IBinder"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnObtenerHora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvServicioEnlazadoBinder"
+                android:text="Obtener Hora Usando Servicio con IBinder" />
         </RelativeLayout>
     </ScrollView>
 
