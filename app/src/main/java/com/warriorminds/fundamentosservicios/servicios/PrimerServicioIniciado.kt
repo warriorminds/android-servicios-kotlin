@@ -24,7 +24,9 @@ class PrimerServicioIniciado : Service() {
         Toast.makeText(this, texto, Toast.LENGTH_SHORT).show()
 
         apagarAutomaticamente?.let {
-            stopSelf(startId)
+            if (it) {
+                stopSelf(startId)
+            }
         }
 
         return Service.START_NOT_STICKY
