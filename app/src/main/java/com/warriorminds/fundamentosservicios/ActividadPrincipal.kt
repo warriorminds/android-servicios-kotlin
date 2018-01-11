@@ -141,7 +141,11 @@ class ActividadPrincipal : AppCompatActivity() {
 
     private fun iniciarServicioPrimerPlano() {
         val intent = Intent(this, ServicioPrimerPlano::class.java)
-        startService(intent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(intent)
+        } else {
+            startService(intent)
+        }
     }
 
     private fun detenerServicioPrimerPlano() {
