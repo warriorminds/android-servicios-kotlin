@@ -42,6 +42,14 @@ class ActividadPrincipal : AppCompatActivity() {
         btnIntentServiceLargaDuracion.setOnClickListener {
             iniciarIntentService()
         }
+
+        btnServicioPrimerPlano.setOnClickListener {
+            iniciarServicioPrimerPlano()
+        }
+
+        btnDetenerServicioPrimerPlano.setOnClickListener {
+            detenerServicioPrimerPlano()
+        }
     }
 
     private fun detenerPrimerServicio() {
@@ -69,5 +77,15 @@ class ActividadPrincipal : AppCompatActivity() {
     private fun iniciarIntentService() {
         val intent = Intent(this, IntentServiceLargaDuracion::class.java)
         startService(intent)
+    }
+
+    private fun iniciarServicioPrimerPlano() {
+        val intent = Intent(this, ServicioPrimerPlano::class.java)
+        startService(intent)
+    }
+
+    private fun detenerServicioPrimerPlano() {
+        val intent = Intent(this, ServicioPrimerPlano::class.java)
+        stopService(intent)
     }
 }

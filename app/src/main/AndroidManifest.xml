@@ -21,6 +21,10 @@
         <service android:name=".servicios.ServicioIniciadoCicloVida" />
         <service android:name=".servicios.ServicioTareaLargaDuracion" />
         <service android:name=".servicios.IntentServiceLargaDuracion" />
+        <service android:name=".servicios.ServicioPrimerPlano"/>
+
+        <activity android:name=".SegundaActividad">
+        </activity>
     </application>
 
 </manifest>
